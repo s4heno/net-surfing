@@ -11,7 +11,7 @@
  * このスクリプトあるいはこのスクリプトを使用した工作で発生した、けがなどのあらゆる問題には、さへのは責任を持ちません。
  * Ver1.0.0　2021/06/06
  * このコードは、SparkFun Electronicsが作成した
- * SparkFun_LSM9DS1_Arduino_Libraryを使用しています。
+ * SparkFun_LSM9DS1_Arduino_Library(ver1.0)を使用しています。
  */
 
 LSM9DS1 imu;
@@ -39,9 +39,9 @@ void setup()
   Wire.begin();
 
   //I2Cモードにして、I2Cアドレスを設定
-  imu.settings.device.commInterface = IMU_MODE_I2C; // Set mode to I2C
-  imu.settings.device.mAddress = LSM9DS1_M; // Set mag address to 0x1E
-  imu.settings.device.agAddress = LSM9DS1_AG; // Set ag address to 0x6B
+  imu.settings.device.commInterface = IMU_MODE_I2C;
+  imu.settings.device.mAddress = LSM9DS1_M;
+  imu.settings.device.agAddress = LSM9DS1_AG;
   imu.begin();
 
   //ピンモード設定
@@ -61,7 +61,7 @@ void loop()
   //ボタンの状態を代入
   clickState = digitalRead(mouseButton);
   
-  //もしも押されていたら
+  //左クリック判定
   if (clickState == LOW) {
     // if the mouse is not pressed, press it:
     if (!Mouse.isPressed(MOUSE_LEFT)) {
